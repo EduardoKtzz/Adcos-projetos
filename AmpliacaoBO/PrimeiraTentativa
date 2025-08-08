@@ -1,0 +1,37 @@
+  
+    session.findById("wnd[0]/usr/subSCREEN_3000_RESIZING_AREA:SAPLBUS_LOCATOR:2036/subSCREEN_1010_RIGHT_AREA:SAPLBUPA_DIALOG_JOEL:1000/ssubSCREEN_1000_WORKAREA_AREA:SAPLBUPA_DIALOG_JOEL:1100/ssubSCREEN_1100_MAIN_AREA:SAPLBUPA_DIALOG_JOEL:1102/tabsGS_SCREEN_1100_TABSTRIP/tabpSCREEN_1100_TAB_02/ssubSCREEN_1100_TABSTRIP_AREA:SAPLBUSS:0028/ssubGENSUB:SAPLBUSS:7005/subA03P01:SAPLCVI_FS_UI_CUSTOMER_CC:0041/ctxtGS_KNB1-ZWELS").Text = "DEFIHKXVG"
+    session.findById("wnd[0]/usr/subSCREEN_3000_RESIZING_AREA:SAPLBUS_LOCATOR:2036/subSCREEN_1010_RIGHT_AREA:SAPLBUPA_DIALOG_JOEL:1000/ssubSCREEN_1000_WORKAREA_AREA:SAPLBUPA_DIALOG_JOEL:1100/ssubSCREEN_1100_MAIN_AREA:SAPLBUPA_DIALOG_JOEL:1102/tabsGS_SCREEN_1100_TABSTRIP/tabpSCREEN_1100_TAB_02/ssubSCREEN_1100_TABSTRIP_AREA:SAPLBUSS:0028/ssubGENSUB:SAPLBUSS:7005/subA03P01:SAPLCVI_FS_UI_CUSTOMER_CC:0041/ctxtGS_KNB1-ZWELS").SetFocus
+    session.findById("wnd[0]/usr/subSCREEN_3000_RESIZING_AREA:SAPLBUS_LOCATOR:2036/subSCREEN_1010_RIGHT_AREA:SAPLBUPA_DIALOG_JOEL:1000/ssubSCREEN_1000_WORKAREA_AREA:SAPLBUPA_DIALOG_JOEL:1100/ssubSCREEN_1100_MAIN_AREA:SAPLBUPA_DIALOG_JOEL:1102/tabsGS_SCREEN_1100_TABSTRIP/tabpSCREEN_1100_TAB_02/ssubSCREEN_1100_TABSTRIP_AREA:SAPLBUSS:0028/ssubGENSUB:SAPLBUSS:7005/subA03P01:SAPLCVI_FS_UI_CUSTOMER_CC:0041/ctxtGS_KNB1-ZWELS").caretPosition = 9
+    session.findById("wnd[0]").sendVKey 0
+    
+    session.findById("wnd[0]/usr/subSCREEN_3000_RESIZING_AREA:SAPLBUS_LOCATOR:2036/subSCREEN_1010_RIGHT_AREA:SAPLBUPA_DIALOG_JOEL:1000/ssubSCREEN_1000_WORKAREA_AREA:SAPLBUPA_DIALOG_JOEL:1100/ssubSCREEN_1100_MAIN_AREA:SAPLBUPA_DIALOG_JOEL:1102/tabsGS_SCREEN_1100_TABSTRIP/tabpSCREEN_1100_TAB_01").Select
+    
+    session.findById("wnd[0]/tbar[1]/btn[25]").press
+    
+    session.findById("wnd[0]/tbar[0]/btn[11]").press
+    
+
+    try:
+        session.findById("wnd[0]/tbar[1]/btn[6]").press
+
+        Sheets("BP (7000-90-20) (GLPI)").Range("E" & conti).Value = "Ampliado 7000-90-20"
+
+    except:
+        try:
+            #Aqui ele confirma se deu erro
+            if session.findById("wnd[1]/usr/btnSPOP-OPTION1").Text in ["Sim", "Yes"]:
+                session.findById("wnd[1]/usr/btnSPOP-OPTION1").press()
+
+            Sheets("BP (7000-90-20) (GLPI)").Range("E" & conti).Value = "ERRO"
+        except:
+            Sheets("BP (7000-90-20) (GLPI)").Range("E" + str(conti)).Value = "ERRO"
+
+    conti = conti + 1
+    pulalayout = 1
+    linha = 0
+    
+    Wend
+    MsgBox ("Ampliação Finalizada")
+    
+    'MsgBox ("Ampliação Finalizada - Gentileza acessar a página do GLPI e clicar na tecla Print Scream")
+      
